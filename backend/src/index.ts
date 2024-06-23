@@ -14,6 +14,18 @@ MainRouter(app)
 app.get('/', (req, res) => {
     res.send('Hello World!')
 })
+
+app.post('/', (req, res) => {
+    db.connect.query('INSERT INTO ttv(tekanan_darah, denyut_nadi, suhu_tubuh, laju_nafas, tinggi_badan, berat_badan) VALUES(?,?,?,?,?,?)',["tekanan_darah", "sdfsdfs","sdfgsdgsdg","sdgfsdgsg","sdfsdf","sdgfsdgsd"], (err: any, result: any) => {
+        if (err) {
+            console.log(err)
+            res.send('error')
+        } else {
+            res.send('success')
+        }
+    })
+})
+
 app.listen(port, () => {
     console.log(`⚡️[server]: Server is running at http://localhost:${port}`);
 });
