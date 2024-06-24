@@ -24,7 +24,13 @@ export default {
       primary400: '#DCF2F1',
       secondary500: '#0F1035',
       secondary400: '#365486',
-      base: '#F1F1F1',
+      orange: colors.orange,
+      tertiary: {
+        500: '#A0DEFF',
+        400: '#CAF4FF'
+      },
+      default: '#F1F1F1',
+      card: '#EBF4F6',
     },
   },
   plugins: [],
