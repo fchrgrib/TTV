@@ -10,8 +10,8 @@ export const AddTTV = async (req: Request, res: Response) => {
         })
     }
 
-    const {tekanan_darah, denyut_nadi, laju_nafas, suhu_tubuh, tinggi_badan, berat_badan} = req.body
-    if (!(tekanan_darah && denyut_nadi && laju_nafas && suhu_tubuh && tinggi_badan && berat_badan)){
+    const {nama, tekanan_darah, denyut_nadi, laju_nafas, suhu_tubuh, tinggi_badan, berat_badan} = req.body
+    if (!(nama && tekanan_darah && denyut_nadi && laju_nafas && suhu_tubuh && tinggi_badan && berat_badan)){
         return res.status(400).send({
             status: "error",
             status_code: 400,
@@ -21,8 +21,8 @@ export const AddTTV = async (req: Request, res: Response) => {
 
     try{
         const db = require('../../services/db.connection')
-        db.connect.query('INSERT INTO ttv(tekanan_darah, denyut_nadi, suhu_tubuh, laju_nafas, tinggi_badan, berat_badan) VALUES(?,?,?,?,?,?)',
-            [tekanan_darah, denyut_nadi, suhu_tubuh, laju_nafas, tinggi_badan, berat_badan],
+        db.connect.query('INSERT INTO ttv(nama, tekanan_darah, denyut_nadi, suhu_tubuh, laju_nafas, tinggi_badan, berat_badan) VALUES(?,?,?,?,?,?,?)',
+            [nama, tekanan_darah, denyut_nadi, suhu_tubuh, laju_nafas, tinggi_badan, berat_badan],
             (err: any, result: any) => {
                 if (err) {
                     console.log(err)

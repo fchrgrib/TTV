@@ -44,8 +44,26 @@ export const FindTtv = async (req: Request, res: Response) => {
                 }
             })
             break
+        case 'name':
+            db.connect.query('SELECT * FROM ttv WHERE ILIKE ', [`%${value}%`], (err: any, result: any) => {
+                if (err) {
+                    console.log(err)
+                    return res.status(500).send({
+                        status: "error",
+                        status_code: 500,
+                        message: "Internal server error"
+                    })
+                } else {
+                    return res.status(200).send({
+                        status: "ok",
+                        status_code: 200,
+                        data: result
+                    })
+                }
+            })
+            break
         default:
-            db.connect.query('SELECT * FROM ttv', (err: any, result: any) => {
+            db.connect.query('SELECT * FROM ttv ORDER BY created_at DESC', (err: any, result: any) => {
                 if (err) {
                     console.log(err)
                     return res.status(500).send({

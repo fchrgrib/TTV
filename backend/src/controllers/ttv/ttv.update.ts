@@ -10,8 +10,8 @@ export const UpdateTTVById = async (req: Request, res: Response) => {
         })
     }
 
-    const {tekanan_darah, denyut_nadi, laju_nafas, suhu_tubuh, tinggi_badan, berat_badan} = req.body
-    if (!(tekanan_darah && denyut_nadi && laju_nafas && suhu_tubuh && tinggi_badan && berat_badan)){
+    const {nama, tekanan_darah, denyut_nadi, laju_nafas, suhu_tubuh, tinggi_badan, berat_badan} = req.body
+    if (!(nama && tekanan_darah && denyut_nadi && laju_nafas && suhu_tubuh && tinggi_badan && berat_badan)){
         return res.status(400).send({
             status: "error",
             status_code: 400,
@@ -21,8 +21,8 @@ export const UpdateTTVById = async (req: Request, res: Response) => {
 
     try{
         const db = require('../../services/db.connection')
-        db.connect.query('UPDATE ttv SET tekanan_darah = ?, denyut_nadi = ?, suhu_tubuh = ?, laju_nafas = ?, tinggi_badan = ?, berat_badan = ? WHERE id = ?',
-            [tekanan_darah, denyut_nadi, suhu_tubuh, laju_nafas, tinggi_badan, berat_badan, id],
+        db.connect.query('UPDATE ttv SET tekanan_darah = ?, denyut_nadi = ?, suhu_tubuh = ?, laju_nafas = ?, tinggi_badan = ?, berat_badan = ?, nama = ? WHERE id = ?',
+            [tekanan_darah, denyut_nadi, suhu_tubuh, laju_nafas, tinggi_badan, berat_badan, nama, id],
             (err: any, result: any) => {
                 if (err) {
                     console.log(err)
