@@ -1,6 +1,15 @@
 version: '1.1'
 
 services:
+  ttv-frontend:
+    build: frontend
+    ports:
+      - 5173:5173
+    volumes:
+      - ./frontend:/app/frontend
+      - /app/frontend/node_modules
+
+
   ttv-backend:
     build: backend
     ports:

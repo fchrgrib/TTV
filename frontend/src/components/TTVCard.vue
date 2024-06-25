@@ -1,6 +1,7 @@
 <script>
 export default {
-  props: ['nama','tekanan_darah', 'denyut_nadi', 'laju_nafas', 'suhu_tubuh', 'berat_badan', 'tinggi_badan', 'id']
+  props: ['nama','tekanan_darah', 'denyut_nadi', 'laju_nafas', 'suhu_tubuh', 'berat_badan', 'tinggi_badan', 'id'],
+  emits: ['delete-ttv'],
 }
 </script>
 
@@ -41,7 +42,7 @@ export default {
       </div>
       <div class="w-2/12 h-full col p-5 flex flex-col justify-between items-center">
         <button class="bg-orange-300 hover:bg-orange-600 p-2 rounded-xl font-bold text-xl text-default select-none w-full" @click="this.$router.push(`/ttv/${id}`)">EDIT</button>
-        <button class="bg-red-300 hover:bg-red-600 p-2 rounded-xl font-bold text-xl text-default select-none w-full">DELETE</button>
+        <button class="bg-red-300 hover:bg-red-600 p-2 rounded-xl font-bold text-xl text-default select-none w-full" @click="this.$emit('delete-ttv')">DELETE</button>
       </div>
     </div>
   </div>
