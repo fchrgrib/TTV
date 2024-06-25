@@ -1,7 +1,7 @@
 import {Request, Response} from "express"
 
 export const FindTtv = async (req: Request, res: Response) => {
-    const findBy = req.query['findby']
+    const findBy = req.query['find_by']
     const value = req.query['value']
     const limit = req.query['limit'] || 0
     const page = req.query['page'] || 1
@@ -45,7 +45,7 @@ export const FindTtv = async (req: Request, res: Response) => {
             })
             break
         case 'name':
-            db.connect.query('SELECT * FROM ttv WHERE ILIKE ', [`%${value}%`], (err: any, result: any) => {
+            db.connect.query('SELECT * FROM ttv WHERE nama LIKE ? ORDER BY created_at DESC', [`%${value}%`], (err: any, result: any) => {
                 if (err) {
                     console.log(err)
                     return res.status(500).send({
