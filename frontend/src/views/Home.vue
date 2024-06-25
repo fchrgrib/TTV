@@ -56,7 +56,7 @@ export default {
       </div>
       <div class="w-full h-auto mt-10" v-for="ttv in ttvs">
         <div key="ttv.id">
-        <TTVCard :nama="ttv.nama" :tekanan_darah="ttv.tekanan_darah" :denyut_nadi="ttv.denyut_nadi" :laju_nafas="ttv.laju_nafas" :suhu_tubuh="ttv.suhu_tubuh" :berat_badan="ttv.berat_badan" :tinggi_badan="ttv.tinggi_badan"/>
+        <TTVCard :nama="ttv.nama" :tekanan_darah="ttv.tekanan_darah" :denyut_nadi="ttv.denyut_nadi" :laju_nafas="ttv.laju_nafas" :suhu_tubuh="ttv.suhu_tubuh" :berat_badan="ttv.berat_badan" :tinggi_badan="ttv.tinggi_badan" :id="ttv.id"/>
         </div>
       </div>
     </div>

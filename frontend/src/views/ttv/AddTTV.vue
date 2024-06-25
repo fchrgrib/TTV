@@ -1,4 +1,6 @@
 <script>
+import axios from "axios";
+
 export default {
   data(){
     return {
@@ -10,7 +12,8 @@ export default {
         suhu_tubuh: "",
         berat_badan: "",
         tinggi_badan: ""
-      }
+      },
+      url: "http://localhost:8080/ttv"
     }
   },
   methods: {
@@ -24,9 +27,23 @@ export default {
         return
       }
 
-      // Add API
-
-      this.$router.replace('/')
+      axios.post(this.url,{
+        nama: this.ttv.nama,
+        tekanan_darah: `${this.ttv.tekanan_darah} mm/hg`,
+        denyut_nadi: `${this.ttv.denyut_nadi} kali/menit`,
+        laju_nafas: `${this.ttv.laju_nafas} kali/menit`,
+        suhu_tubuh: `${this.ttv.suhu_tubuh} °C`,
+        berat_badan: `${this.ttv.berat_badan} kg`,
+        tinggi_badan: `${this.ttv.tinggi_badan} cm`
+      })
+          .then((res) => {
+            console.log(res)
+            this.$router.replace('/')
+          })
+          .catch((err) => {
+            console.log(err)
+            alert("Failed to add TTV")
+      })
     }
   }
 }
